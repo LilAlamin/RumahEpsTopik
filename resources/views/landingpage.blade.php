@@ -32,7 +32,7 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-home" href="#">Home<br>홈</a>
+                        <a class="nav-link" id="nav-home" href="#">HomeBanget<br>홈</a>
 
                     </li>
                     <li class="nav-item">
