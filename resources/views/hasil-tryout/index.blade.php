@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<div class="row no-gutters">
+<div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -20,8 +20,8 @@
                     </div>
                     @else
                     <div class="card shadow-none">
-                        <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap table-striped" id="tabel-hasil-tryout">
+                        <div class="card-body table-responsive p-0" style="height: 300px; ">
+                            <table class="table table-hover text-nowrap table-striped" style="overflow-y: scroll" id="tabel-hasil-tryout">
                                 <thead style="background-color: #263B5E">
                                     <tr class="text-white">
                                         <th width="30">No</th>
@@ -70,7 +70,8 @@
                         "previous": "Sebelumnya"
                     },
                     "search": "Cari:"
-                }
+                },
+                "responsive": true
             });
         });
     </script>

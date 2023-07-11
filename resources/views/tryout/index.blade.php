@@ -1,27 +1,38 @@
 @extends('adminlte::page')
 
-
-
 @section('content')
+<style>
+    html,body{
+        overflow-x: hidden;
+    }
+</style>
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-lg-10">
-                            @if (session('user-quiz.section') =='membaca')
-                            <h3>Membaca 읽기 </h3>
-                            @else
-                            <h3>Mendengar 듣기</h3>
-                          @endif
+                        <div class="col-md-8">
+                            <h3>
+                                @if (session('user-quiz.section') =='membaca')
+                                    Membaca 읽기
+                                @else
+                                    Mendengar 듣기
+                                @endif
+                            </h3>
                         </div>
-                        <div class="col-lg-2">
-                        <div class="row ">
-                        <h3 style="padding: 0px 5px;margin-left:-35px" class=" border-2 bg-light "> sisa waktu &nbsp; </h3>
-                        <h3 style="background-color:#1D3D73;color:white;padding:0px 10px;margin-left:-10px" id="timer"></h3>
-                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h3 style="padding: 0px 5px;">sisa waktu&nbsp;</h3>
+                                </div>
+                                <div class="md:col-3">
+                                    <h3 id="timer" class="text-white justify-center" style="padding:0px 10px; background-color:#1D3D73"></h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -36,9 +47,10 @@
                                     <div class="mb-3">
                                         <textarea class="form-control" style="border: none;height:150px" readonly>{{$question['question']}}</textarea>
                                         @if(!empty($question['pic_url']))
-                                            <div style="margin-left: 250px"  class="col-lg-6 p-0 mt-1">
-                                                <img style="width: 200px" src="{{config('apiurl.url').'/api/storage/question/'.$question['pic_url']}}" class="img-fluid rounded w-75" alt="Gambar soal">
-                                            </div>
+                                        <div class="col-lg-6 p-0 mt-1">
+                                            <img class="img-fluid rounded w-100" src="{{config('apiurl.url').'/api/storage/question/'.$question['pic_url']}}" alt="Gambar soal">
+                                        </div>
+                                        
                                         @endif
                                         @if(!empty($question['audio_url']))
                                             <div class="col-lg-6 p-0 mt-1">
@@ -120,12 +132,12 @@
                                     <div style="width: 18px;height:18px" class="bg-white border border-2"></div>
                                      <p style="font-size: 15px;margin-top:-3px;"> &nbsp; : Belum dijawab </p>
                                     </div>
-                                    </div>
                                     {{-- @if(session('user-quiz.section') == 'membaca')
-                                    <button class="btn btn-danger m-1" id="btn-batal-tryout"></button>
+                                    <button class="btn btn-danger m-1 btn-batal-tryout">Batal Mengerjakan Quiz?</button>
                                     @else
-                                    <button class="btn btn-secondary m-1" id="btn-selesai-tryout" disabled>Jawaban tersimpan automatis</button>
+                                    <button class="btn btn-secondary m-1 btn-selesai-tryout">Jawaban Tersimpan Automatis</button>
                                     @endif --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>

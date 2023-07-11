@@ -40,11 +40,11 @@ class="text-dark">{{$data->topik->name}}</a>{{ ' - ' . $data->name }}</h1> --}}
                     </p>
                 </div>
                 <div class="row justify-content-between">
-                    <ul class="pagination">
-                        <li  class="page-item"><a style="border-radius:29px;margin-left:30px;background-color:#039BB2;width:150px;height:45px" class="page-link text-white text-center" href="{{ url()->previous() }}"><i class="fa fa-backward mr-2" aria-hidden="true"></i>Kembali</a></li>
+                    <ul class="pagination col-6">
+                        <li  class="page-item"><a style="border-radius:29px;margin-left:7px;background-color:#039BB2;width:150px;height:45px" class="page-link text-white text-center" href="{{ url()->previous() }}"><i class="fa fa-backward mr-2" aria-hidden="true"></i>Kembali</a></li>
                     </ul>
-                    <ul class="pagination justify-content-end">
-                        <li class="page-item"><a  style="border-radius:29px;margin-right:30px;background-color:#039BB2;width:150px;height:45px" class="page-link text-white btn-mulai-tryout text-center" href="{{ route('tryout.index').'?session='.session()->getId().$quiz->id }}" data-kuis-id="{{$quiz->id}}">Lanjut<i class="fa fa-forward ml-2" aria-hidden="true"></i></a></li>
+                    <ul class="pagination justify-content-end col-6">
+                        <li class="page-item"><a  style="border-radius:29px;margin-right:7px;background-color:#039BB2;width:150px;height:45px" class="page-link text-white btn-mulai-tryout text-center" href="{{ route('tryout.index').'?session='.session()->getId().$quiz->id }}" data-kuis-id="{{$quiz->id}}">Lanjut<i class="fa fa-forward ml-2" aria-hidden="true"></i></a></li>
                     </ul>
                     
                 </div>

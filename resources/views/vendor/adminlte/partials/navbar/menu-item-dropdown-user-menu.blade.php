@@ -13,17 +13,15 @@
     @php( $logout_url = $logout_url ? url($logout_url) : '' )
 @endif
 
-<li style="text-align: right"  class="nav-item dropdown user-menu"><a href="{{route('paket-saya.index')}}" style="color:#313945;font-weight:bold;"class="nav-link dropdown-toggle " href=""><i class="fa fa-home"></i>Beranda</a></li>
+<li style="text-align: left"  class="nav-item dropdown user-menu"><a href="{{route('paket-saya.index')}}" style="color:#313945;font-weight:bold;"class="nav-link dropdown-toggle " href=""><i class="fa fa-home"></i>Beranda</a></li>
 <li class="nav-item dropdown user-menu"><a href="{{route('hasil-tryout.index')}}" style="color:#313945;font-weight:bold" class="nav-link dropdown-toggle " href=""><i class="fas fa-fw fa-file-alt"></i>Hasil Tryout</a></li>
 <li  class="nav-item dropdown user-menu mr-5">
 
     {{-- User menu toggler --}}
-    <a style="color:#313945;font-weight:bold" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-user-circle" aria-hidden="true"></i>
-        
-        <span class="d-none d-md-inline" >
-            {{ Auth::user()->name }}
-        </span>
+    <a style="color:#313945;font-weight:bold font-family:inherit" href="#" class="nav-link dropdown-toggle navbar navbar-expand-md" data-toggle="dropdown">
+        <i class="fa fa-user-circle" aria-hidden="true">
+            {{ Auth::user()->name }} 
+        </i>
     </a>
     
 

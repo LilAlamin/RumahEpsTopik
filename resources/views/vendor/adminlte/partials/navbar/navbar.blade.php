@@ -1,41 +1,36 @@
-<nav style="background-color:#E8F5F7;padding:15px 0px"class="navbar
-    {{ config('adminlte.classes_topnav_nav', 'navbar-expand') }}
-    {{ config('adminlte.classes_topnav', 'navbar-white navbar-light') }}">
-
-    {{-- Navbar left links --}}
-    <ul class="navbar-nav">
-        {{-- Left sidebar toggler link --}}
-        @include('adminlte::partials.navbar.menu-item-left-sidebar-toggler')
-
-        {{-- Configured left links --}}
-        @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-left'), 'item')
-
-        {{-- Custom left links --}}
-        @yield('content_top_nav_left')
-    </ul>
-
-    {{-- Navbar right links --}}
-   <a href="{{route('home')}}"> <img style="width: 163px;margin-left:100px" class="img-fluid " src="{{asset('landingpage/img/icon/logo.png')}}" alt=""></a>
-    <ul class="navbar-nav ml-auto">
-        {{-- Custom right links --}}
-        @yield('content_top_nav_right')
-
-        {{-- Configured right links --}}
-        @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
-
-        {{-- User menu link --}}
-        @if(Auth::user())
-            @if(config('adminlte.usermenu_enabled'))
-                @include('adminlte::partials.navbar.menu-item-dropdown-user-menu')
-            @else
-                @include('adminlte::partials.navbar.menu-item-logout-link')
-            @endif
-        @endif
-
-        {{-- Right sidebar toggler link --}}
-        @if(config('adminlte.right_sidebar'))
-            @include('adminlte::partials.navbar.menu-item-right-sidebar-toggler')
-        @endif
-    </ul>
-
+<nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand w-50" href="#"><img class="img-fluid w-50"
+                src="{{ asset('landingpage/img/icon/logo.png') }}" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                {{-- Custom right links --}}
+                @yield('content_top_nav_right')
+        
+                {{-- Configured right links --}}
+                @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
+        
+                {{-- User menu link --}}
+                @if(Auth::user())
+                    @if(config('adminlte.usermenu_enabled'))
+                        @include('adminlte::partials.navbar.menu-item-dropdown-user-menu')
+                    @else
+                        @include('adminlte::partials.navbar.menu-item-logout-link')
+                    @endif
+                @endif
+        
+                {{-- Right sidebar toggler link --}}
+                @if(config('adminlte.right_sidebar'))
+                    @include('adminlte::partials.navbar.menu-item-right-sidebar-toggler')
+                @endif
+            </ul>
+        </div>
+    </div>
 </nav>
+
+   
+

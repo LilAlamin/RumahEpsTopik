@@ -17,9 +17,21 @@
 
 
 
-
+<style>
+    @media (max-width: 800px) {
+    .coverImage {
+        height: 250px;
+    }
+    .form{
+        margin-left: -12%;
+    }
+    .box{
+        margin-top:-10%;
+    }
+}
+</style>
 @section('auth_body')
-    <div style="margin-top: 50%">
+    <div style="margin-top: 50%" class="box">
         <p style="font-size:25px;color:#263B5E" class="text-center font-weight-bold">MASUK</p>
     <form action="{{ $login_url }}" method="post">
         {{ csrf_field() }}
