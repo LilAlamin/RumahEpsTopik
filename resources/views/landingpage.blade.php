@@ -16,6 +16,11 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{asset('landingpage/sass/main.css')}}">
 </head>
+<style>
+    body,html{
+        overflow-x: hidden;
+    }
+</style>
 
 <body>
     <!-- ========== Start Navbar ==========-->
@@ -279,17 +284,56 @@
     <section class="ready ptb-120">
         <div class="container d-flex justify-content-between d-flex ">
             <div class="row justify-content-between">
-                <div class="col-lg-8">
+                <div class="col-lg-8 tulisan">
                     <h3 class="h2-white">Anda Siap Coba?<br>도절할 준비되셨나요? </h3>
                 </div>
-                <div style="left: 50%;top:10%" class="col-lg-4 ">
-                    <div class="btn">
+                <div class="col-lg-4 paket">
+                    <div class="btn lihat">
                         <a id="btn-paket" href="#0" class="btn-white">Lihat Paket</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+    {{-- iki responsive --}}
+    <style>
+        .col-lg-4{
+            left: 60%;
+            top: 40%;
+        }
+    @media only screen and (max-width: 500px) {
+        .paket{
+            margin-left: -35%;
+        }
+    }
+    @media only screen and (max-width: 800px) {
+        .paket{
+            margin-left: -30%;
+        }
+        .tulisan{
+            margin-left: 10%;
+        }
+    }
+    @media only screen and (min-width: 801px) {
+        .paket{
+            margin-left: 20%;
+            margin-top: -19%;
+        }
+    }
+    @media only screen and (min-width: 992px){
+        .paket{
+            margin-top: -25%;
+            left: 90%;
+        }
+    }
+    @media only screen and (min-width: 1080px){
+        .paket{
+            margin-left: 75%;
+        }
+    }
+    </style>
 
     <section id="paket" class="how-work ptb-120">
         <div class="container text-center">
