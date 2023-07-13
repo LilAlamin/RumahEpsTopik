@@ -3,7 +3,7 @@
 <!-- @section('title', 'RUKO') -->
 
 @section('content_header')
-<h1 class="m-0 text-dark">{{ __('adminlte::menu.hasil_try_out') }}</h1>
+<h1 class="text-dark" style="margin-left: 10px">{{ __('adminlte::menu.hasil_try_out') }}</h1>
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
                         <div class="card-body table-responsive p-0" style="height: 300px; ">
                             <table class="table table-hover text-nowrap table-striped" style="overflow-y: scroll" id="tabel-hasil-tryout">
                                 <thead style="background-color: #263B5E">
-                                    <tr class="text-white">
+                                    <tr class="text-white text-center">
                                         <th width="30">No</th>
                                         <th>Tanggal</th>
                                         <th>Topik</th>
