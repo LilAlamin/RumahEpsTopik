@@ -278,6 +278,17 @@
                 </div>
             </div>
         </div>
+
+        <style>
+        @media only screen and (max-width: 500px) {
+        .icon{
+            margin-top: -5%;
+        }
+        .col-md-8 {
+            margin-top: 5%;
+        }
+    }
+        </style>
     </section>
     <!-- ========== End Offers ==========-->
 
@@ -285,7 +296,7 @@
         <div class="container d-flex justify-content-between d-flex ">
             <div class="row justify-content-between">
                 <div class="col-lg-8 tulisan">
-                    <h3 class="h2-white tulisan">Anda Siap Coba?<br>도절할 준비되셨나요? </h3>
+                    <h3 class="h2-white tul">Anda Siap Coba?<br>도절할 준비되셨나요? </h3>
                 </div>
                 <div class="col-lg-4 paket">
                     <div class="btn lihat">
@@ -305,13 +316,22 @@
         }
     @media only screen and (max-width: 500px) {
         .paket{
-            margin-left: -40%;
+            margin-left: -35%;
         }
         .lihat{
-            margin: -6%;
+            margin-left: -8%;
+            margin-top: -25%;
+        }
+        .tul{
+            text-align: center;
+            margin-left: -12%;
+
         }
         .tulisan{
-            font-size: 40px;
+            margin-left: -25%;
+        }
+        .foot{
+            margin-top: -30%;
         }
     }
     @media only screen and (max-width: 800px) {
@@ -481,7 +501,7 @@
     <!-- ========== End Ready ==========-->
 
     <!-- ========== Start Footer ==========-->
-    <footer class="footer ptb-120">
+    <footer class="footer ptb-120 foot">
         <div class="container">
             <div class="row">
                 <!-- Who We Are -->
