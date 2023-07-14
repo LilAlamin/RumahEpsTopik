@@ -19,7 +19,7 @@
 
     {{-- User menu toggler --}}
     <a style="color:#313945;font-weight:bold font-family:inherit" href="#" class="nav-link dropdown-toggle navbar navbar-expand-md" data-toggle="dropdown">
-        <i class="fa fa-user-circle" aria-hidden="true" style="margin-left: 11px;">
+        <i class="fa fa-user-circle" aria-hidden="true" style="margin-left: 11px; margin-top: 5px;">
                 {{ Auth::user()->name }}   
         </i>
         

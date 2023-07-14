@@ -14,16 +14,16 @@
                         <div class="col-md-8">
                             <h3>
                                 @if (session('user-quiz.section') =='membaca')
-                                    Membaca 읽기
+                                    읽기 <!-- membaca -->
                                 @else
-                                    Mendengar 듣기
+                                    듣기 <!-- mendengarkan -->
                                 @endif
                             </h3>
                         </div>
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-8">
-                                    <h3 style="padding: 0px 5px;">sisa waktu&nbsp;</h3>
+                                    <h3 style="padding: 0px 5px;">남은 시간 <!-- sisa waktu-->&nbsp;</h3>
                                 </div>
                                 <div class="md:col-3">
                                     <h3 id="timer" class="text-white justify-center" style="padding:0px 10px; background-color:#1D3D73"></h3>
@@ -41,7 +41,7 @@
                             @foreach ($data as $key => $question)
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Soal Nomor {{ $data->currentPage() }}</h4>
+                                    <h4> 문제 번호 <!-- Soal Nomor--> {{ $data->currentPage() }}</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-3">
@@ -107,7 +107,7 @@
                         <div class="col-12 col-md-3">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Nomor Soal</h4>
+                                    <h4>질문 번호 <!-- Nomor Soal --></h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="d-flex flex-wrap justify-content-center align-items-center answer-map-container mb-3">
@@ -120,17 +120,18 @@
                                     <div class="row ml-3">
                                     <div class="row col-12">
                                     <div style="width: 18px;height:18px;background-color:#1E9549"></div>
-                                     <p style="font-size: 15px;margin-top:-3px"> &nbsp; : Sudah dijawab</p>
+                                     <p style="font-size: 15px;margin-top:-3px"> &nbsp; : 이미 대답했다<!-- Sudah dijawab --></p>
                                     </div>
                                     <br>
                                     <div class="row col-12">
                                     <div style="width: 18px;height:18px" class="bg-primary"></div>
-                                     <p style="font-size: 15px;margin-top:-3px"> &nbsp; : Sedang dijawab</p>
+                                     <p style="font-size: 15px;margin-top:-3px"> &nbsp; :  
+답장을 받고 있다<!-- Sedang dijawab --></p>
                                     </div>
                                     <br>
                                     <div class="row col-12">
                                     <div style="width: 18px;height:18px" class="bg-white border border-2"></div>
-                                     <p style="font-size: 15px;margin-top:-3px;"> &nbsp; : Belum dijawab </p>
+                                     <p style="font-size: 15px;margin-top:-3px;"> &nbsp; : 대답하지 않았다<!--Belum dijawab--> </p>
                                     </div>
                                     {{-- @if(session('user-quiz.section') == 'membaca')
                                     <button class="btn btn-danger m-1 btn-batal-tryout">Batal Mengerjakan Quiz?</button>

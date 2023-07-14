@@ -19,14 +19,11 @@
 
 <style>
     @media only screen and (max-width:500px){
-        html,body{
-            overflow-y:hidden; 
-        }
         .form{
             margin-top: -5%;
         }
         .kotak{
-            margin-top: -130%;
+            margin-top: -180%;
             width: 400px;
             box-shadow: 2px 2px 20px 2px white;
             height: -200px;
