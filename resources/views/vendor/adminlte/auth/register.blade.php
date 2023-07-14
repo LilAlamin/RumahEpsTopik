@@ -14,7 +14,7 @@
 
 
 @section('auth_body')
-<div style="margin-top:20%">
+<div style="margin-top:-5%">
     <p style="font-size:25px; color:#263B5E;" class="text-center font-weight-bold">DAFTAR AKUN</p>
     <form action="{{ $register_url }}" method="post">
         {{ csrf_field() }}

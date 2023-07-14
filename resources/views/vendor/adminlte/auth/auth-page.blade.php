@@ -18,60 +18,74 @@
 @section('body')
 
 <style>
-@media (max-width: 800px) {
-    .coverImage {
-        height: 300px;
-        padding-top:-50%;
+    @media only screen and (max-width:500px){
+        html,body{
+            overflow-y:hidden; 
+        }
+        .form{
+            margin-top: -5%;
+        }
+        .kotak{
+            margin-top: -130%;
+            width: 400px;
+            box-shadow: 2px 2px 20px 2px white;
+            height: -200px;
+            
+        }
+        .tul{
+            margin-left: -11%;
+            margin-top: -40%;
+        }
+        
+        
     }
-    .form{
-        margin-left: -11%;
-    }
-    .box{
-        margin-top:-50%;
-    }
-}
-
 </style>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 coverImage" style="background: url('../img/backgound.png') no-repeat; padding:0px 0px; background-size:cover; background-position:center; height:680px;">
-            <div class="text-center" style="margin-top:60%;">
-                <img class="img-fluid w-75" src="{{asset('landingpage/img/icon/logo.png')}}" alt="">
-            </div>
+<div class="row no-gutters" style="">
+    <div style="background: url('../img/backgound.png') no-repeat ;padding:0px 0px;background-size:cover;background-position:center;margin:0px;height:820px" class="col-12 col-md-4">
+        <div class="text-center" style="margin-top:60%">
+            <img class="img-fluid w-75 tul" src="{{asset('landingpage/img/icon/logo.png')}}" alt="">
         </div>
-        <div class="col-md-8 form">
-            <div style="margin-left:30%;">
-                <div class="{{ $auth_type ?? 'login' }}-box">
+    </div>
+    <div class="col-12 col-md-8  form" style="margin-top: 4%;">
+        <div class="mx-auto" style="max-width: 400px;">
+            <div class="{{ $auth_type ?? 'login' }}-box">
 
-                    {{-- Card Header --}}
+                {{-- Logo --}}
+
+                {{-- Card Box --}}
+                <div class="card kotak">
+                <div class="isi"> 
+                
+                        {{-- Card Header --}}
                     @hasSection('auth_header')
-                        <div>
-                            <h3 class="card-title float-none text-center">
-                                @yield('auth_header')
-                            </h3>
-                        </div>
+                    <div class="card-header">
+                        <h3 class="card-title text-center">
+                            @yield('auth_header')
+                        </h3>
+                    </div>
                     @endif
+            
 
                     {{-- Card Body --}}
-                    <div class="card-body {{ $auth_type ?? 'login' }}-card-body {{ config('adminlte.classes_auth_body', '') }}">
+                    <div class="card-body tes {{ $auth_type ?? 'login' }}-card-body">
                         @yield('auth_body')
                     </div>
-
+                    
                     {{-- Card Footer --}}
                     @hasSection('auth_footer')
-                        <div class="card-footer {{ config('adminlte.classes_auth_footer', '') }}">
-                            @yield('auth_footer')
-                        </div>
+                    <div class="card-footer">
+                        @yield('auth_footer')
+                    </div>
                     @endif
+                             
+                    
 
                 </div>
+            </div>
             </div>
         </div>
     </div>
 </div>
-
 
 @stop
 

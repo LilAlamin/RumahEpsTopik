@@ -16,22 +16,27 @@
 @endif
 
 
-
 <style>
-    @media (max-width: 800px) {
-    .coverImage {
-        height: 250px;
+   <style>
+    @media only screen and (max-width:500px){
+        .form{
+            margin-top: -5%;
+        }
+        .kotak{
+            margin-top: -90%;
+            width: 400px;
+            box-shadow: 2px 2px 20px 2px white;
+            height: -200px;
+            
+        }
+        .tul{
+            margin-left: -11%;
+        }
     }
-    .form{
-        margin-left: -12%;
-    }
-    .box{
-        margin-top:-10%;
-    }
-}
 </style>
+
 @section('auth_body')
-    <div style="margin-top: 50%" class="box">
+    <div style="margin-top: -5%" class="body">
         <p style="font-size:25px;color:#263B5E" class="text-center font-weight-bold">MASUK</p>
     <form action="{{ $login_url }}" method="post">
         {{ csrf_field() }}
@@ -97,5 +102,3 @@
     </span>
 </p>
 @stop
-
-
