@@ -63,7 +63,7 @@ class LoginController extends Controller
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
         {
             if (Auth::user()->hasRole('user')) {
-                return redirect()->route('paket-saya.index');
+                return redirect()->route('paket-saya.index')->with('pesan','Anda Berhasil Login');
                 return route('paket-saya.index');
             } else {
                 Auth::logout();

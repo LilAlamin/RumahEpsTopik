@@ -356,7 +356,7 @@
     }
     @media only screen and (min-width: 1080px){
         .paket{
-            margin-left: 75%;
+            margin-left: 65%;
         }
     }
     </style>
@@ -393,8 +393,9 @@
                         </div>
                     </div>
                 </div>
+                <iframe width="560" height="369" src="https://www.youtube.com/embed/LguMi2icejk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <!-- Box-1 -->
-                <div class="col-lg-3 col-md-6">
+                {{-- <div class="col-lg-3 col-md-6">
                     <div class="box">
 
                         <h4 class="h4 mb-10">EPS TOPIK 2</h4>
@@ -425,7 +426,7 @@
                             <a style="padding: 3px 75px" href="#0" class="btn-blue">Lihat<br>더보기</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Box-1 -->
 
             </div>
@@ -537,14 +538,14 @@
                         <div class="icons">
                             <div class="ico">
                                <div class="icon d-flex justify-content-center align-items-center">
-                                    <a href="https://www.youtube.com/channel/UChIBJIAOf8wo_zM2hE7LdFw/featured">
+                                    <a href="https://www.youtube.com/@rumahkoreaedu" target="_blank">
                                         <i class="fa fa-youtube" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>
                             <div class="ico">
                                 <div class="icon d-flex justify-content-center align-items-center">
-                                    <a href="https://www.instagram.com/rumahkoreaedu/">
+                                    <a href="https://www.instagram.com/rumahkoreaedu/" target="_blank">
                                         <i class="fa fa-instagram" aria-hidden="true"></i>
                                     </a>
                                 </div>
