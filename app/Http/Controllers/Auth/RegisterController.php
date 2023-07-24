@@ -79,6 +79,9 @@ class RegisterController extends Controller
         \DB::table('collagers')->insert([
             'user_id' => $data->id
         ]);
+        // Flash a success message to the session
+        session()->flash('success', 'Selamat Datang , Registrasi Anda Berhasil Disimpan');
+
         return $data;
     }
 }

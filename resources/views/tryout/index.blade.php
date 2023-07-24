@@ -62,41 +62,47 @@
                                     <div>
                                         <div class="row">
                                             @foreach(collect($question['answer']) as $keyAnswer => $answer)
-                                            @switch($answer['option'])
-                                                @case('A')
-                                                    @php $order = 'order-1 order-md-1'; @endphp
-                                                    @break;
-                                                @case('B')
-                                                    @php $order = 'order-2 order-md-3'; @endphp
-                                                    @break;
-                                                @case('C')
-                                                    @php $order = 'order-3 order-md-2'; @endphp
-                                                    @break;
-                                                @case('D')
-                                                    @php $order = 'order-4 order-md-4'; @endphp
-                                                    @break;
-                                                @case('E')
-                                                    @php $order = 'order-5 order-md-5'; @endphp
-                                                    @break;
-                                            @endswitch
-                                            <div class="col-lg-6 col-md-12 {{$order}}">
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <div class="custom-control custom-radio mb-2">
-                                                            <input class="custom-control-input answer-option" type="radio" id="userAnswer{{$keyAnswer}}" name="userAnswer[{{$key}}]" data-no="{{$data->currentPage()}}" data-question-id="{{$question['id']}}" data-id="{{$answer['id']}}" value="{{$answer['option']}}" {{ session('user-quiz.answer-'.$section.'.'.$data->currentPage().'.0.option') == $answer['option'] ? 'checked':'' }}>
-                                                            <label for="userAnswer{{$keyAnswer}}" class="custom-control-label">{{$answer['option'].'. '.$answer['content']}}</label>
-                                                            @if(!empty($answer['pic_url']))
-                                                            <div>
-                                                                <img src="{{config('apiurl.url').'/storage/images/option/'.$answer['pic_url']}}" class="img-fluid w-25 rounded" alt="Opsi gambar">
+                                                @switch($answer['option'])
+                                                    @case('A')
+                                                        @php $order = 'order-1 order-md-1'; @endphp
+                                                        @php $optionNumber = '1'; @endphp
+                                                        @break;
+                                                    @case('B')
+                                                        @php $order = 'order-2 order-md-3'; @endphp
+                                                        @php $optionNumber = '2'; @endphp
+                                                        @break;
+                                                    @case('C')
+                                                        @php $order = 'order-3 order-md-2'; @endphp
+                                                        @php $optionNumber = '3'; @endphp
+                                                        @break;
+                                                    @case('D')
+                                                        @php $order = 'order-4 order-md-4'; @endphp
+                                                        @php $optionNumber = '4'; @endphp
+                                                        @break;
+                                                    @case('E')
+                                                        @php $order = 'order-5 order-md-5'; @endphp
+                                                        @php $optionNumber = '5'; @endphp
+                                                        @break;
+                                                @endswitch
+                                                <div class="col-lg-6 col-md-12 {{$order}}">
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="custom-control custom-radio mb-2">
+                                                                <input class="custom-control-input answer-option" type="radio" id="userAnswer{{$keyAnswer}}" name="userAnswer[{{$key}}]" data-no="{{$data->currentPage()}}" data-question-id="{{$question['id']}}" data-id="{{$answer['id']}}" value="{{$optionNumber}}" {{ session('user-quiz.answer-'.$section.'.'.$data->currentPage().'.0.option') == $answer['option'] ? 'checked':'' }}>
+                                                                <label for="userAnswer{{$keyAnswer}}" class="custom-control-label">{{$optionNumber.'. '.$answer['content']}}</label>
+                                                                @if(!empty($answer['pic_url']))
+                                                                <div>
+                                                                    <img src="{{config('apiurl.url').'/storage/images/option/'.$answer['pic_url']}}" class="img-fluid w-25 rounded" alt="Opsi gambar">
+                                                                </div>
+                                                                @endif
                                                             </div>
-                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             @endforeach
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <div class="card-footer d-flex justify-content-center">
                                     {{ $data->links('vendor.pagination.simple-bootstrap-4') }}
