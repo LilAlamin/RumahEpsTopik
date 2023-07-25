@@ -43,7 +43,7 @@
             <img class="img-fluid w-75 tul" src="{{asset('landingpage/img/icon/logo.png')}}" alt="">
         </div>
     </div>
-    <div class="col-12 col-md-8  form" style="margin-top: 4%;">
+    <div class="col-12 col-md-8  form" style="margin-top: 12%;">
         <div class="mx-auto" style="max-width: 400px;">
             <div class="{{ $auth_type ?? 'login' }}-box">
 

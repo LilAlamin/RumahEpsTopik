@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Transaksi;
-use App\Models\DetailTransaksi;
 use App\Models\Paket;
 use App\Models\Topik;
-use Auth;
-use Str;
-use DB;
+use App\Models\Transaksi;
+
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\DetailTransaksi;
+use Illuminate\Support\Facades\Auth;
 
 class PaketController extends Controller
 {

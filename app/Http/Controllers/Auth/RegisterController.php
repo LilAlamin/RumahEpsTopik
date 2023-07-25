@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -76,7 +78,7 @@ class RegisterController extends Controller
             'lpk' => 'LPK2109141338952',
             'picture' => 'avatar.png',
         ])->assignRole('user');
-        \DB::table('collagers')->insert([
+        DB::table('collagers')->insert([
             'user_id' => $data->id
         ]);
         // Flash a success message to the session
