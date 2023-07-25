@@ -19,6 +19,9 @@
 
 <style>
     @media only screen and (max-width:500px){
+        html, body {
+            overflow-x: hidden;
+        }
         .form{
             margin-top: -5%;
         }
