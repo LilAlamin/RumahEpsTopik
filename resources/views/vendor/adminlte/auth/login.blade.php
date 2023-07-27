@@ -20,7 +20,7 @@
    <style>
     @media only screen and (max-width:500px){
         .form{
-            margin-top: -5%;
+            margin-top: -10%;
         }
         .kotak{
             margin-top: -90%;
@@ -36,7 +36,7 @@
 </style>
 
 @section('auth_body')
-    <div style="margin-top: -5%" class="body">
+    <div style="margin-top: -5%"  class="body">
         <p style="font-size:25px;color:#263B5E" class="text-center font-weight-bold">MASUK</p>
     <form action="{{ $login_url }}" method="post">
         {{ csrf_field() }}
