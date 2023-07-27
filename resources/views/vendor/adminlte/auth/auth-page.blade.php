@@ -18,32 +18,42 @@
 @section('body')
 
 <style>
+    html,body{
+        height: 100vh;
+    }
+    .tul{
+            display: flex;
+            align-items: center;
+        }
     @media only screen and (max-width:500px){
         .form{
             margin-top: -5%;
         }
         .kotak{
-            margin-top: -180%;
+            margin-top: -120%;
             width: 400px;
             box-shadow: 2px 2px 20px 2px white;
             height: -200px;
+            height: 60vh;
             
         }
         .tul{
-            margin-left: -11%;
-            margin-top: -40%;
+            display: flex;
+            align-items: center;
+            margin-left: 9%;
+            margin-top: -30%;
         }
         
         
     }
 </style>
 <div class="row no-gutters" style="">
-    <div style="background: url('../img/backgound.png') no-repeat ;padding:0px 0px;background-size:cover;background-position:center;margin:0px;height:820px" class="col-12 col-md-4">
+    <div style="background: url('../img/backgound.png') no-repeat ;padding:0px 0px;background-size:cover;background-position:center;margin:0px;height:110vh" class="col-12 col-md-4">
         <div class="text-center" style="margin-top:60%">
             <img class="img-fluid w-75 tul" src="{{asset('landingpage/img/icon/logo.png')}}" alt="">
         </div>
     </div>
-    <div class="col-12 col-md-8  form" style="margin-top: 4%;">
+    <div class="col-12 col-md-8  form" style="margin-top: 8%;">
         <div class="mx-auto" style="max-width: 400px;">
             <div class="{{ $auth_type ?? 'login' }}-box">
 

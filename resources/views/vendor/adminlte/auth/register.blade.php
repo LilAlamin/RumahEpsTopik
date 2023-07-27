@@ -68,6 +68,7 @@
     @endif
 </div>
 
+{{-- Phone --}}
 <div class="input-group mb-3">
     <input type="text" name="phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
         value="{{ old('phone') }}" placeholder="nomer telepon" >

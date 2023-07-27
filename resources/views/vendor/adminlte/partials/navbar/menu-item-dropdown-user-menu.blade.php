@@ -19,7 +19,7 @@
 
     {{-- User menu toggler --}}
     <a  href="#" class="nav-link dropdown-toggle navbar navbar-expand-md" data-toggle="dropdown">
-        <span style="color:#313945;font-weight:bold; font-family:inherit">
+        <span style="color:#313945;font-weight:bold;9p  1qa2w3e4r5j font-family:inherit">
         <i class="fa fa-user-circle" aria-hidden="true" style="margin-right:3px;">
               
         </i>

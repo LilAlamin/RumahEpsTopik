@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\Carbon;
+use App\Models\Quiz;
+use App\Models\Answer;
+use App\Models\Question;
+use App\Models\TryoutUser;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Models\Quiz;
-use App\Models\Question;
-use App\Models\Answer;
-use App\Models\TryoutUser;
-use Carbon\Carbon;
-use Auth;
-use Str;
-use DB;
 
 class TryOutController extends Controller
 {

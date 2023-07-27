@@ -78,7 +78,7 @@ return [
     'max'                  => [
         'numeric' => ':Attribute maksimal bernilai :max.',
         'file'    => ':Attribute maksimal berukuran :max kilobita.',
-        'string'  => ':Attribute maksimal berisi :max karakter.',
+        'string'  => ':Attribute maksimal berisi :max karakter dan harus berisi angka.',
         'array'   => ':Attribute maksimal terdiri dari :max anggota.',
     ],
     'mimes'                => ':Attribute harus berupa berkas berjenis: :values.',
@@ -86,7 +86,7 @@ return [
     'min'                  => [
         'numeric' => ':Attribute minimal bernilai :min.',
         'file'    => ':Attribute minimal berukuran :min kilobita.',
-        'string'  => ':Attribute minimal berisi :min karakter.',
+        'string'  => ':Attribute minimal berisi :min karakter dan harus berisi angka.',
         'array'   => ':Attribute minimal terdiri dari :min anggota.',
     ],
     'multiple_of'          => 'The :attribute must be a multiple of :value',
