@@ -29,25 +29,50 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
-    {
-        $filter = $request->filter ?: null;
-        $collagerId = Auth::user()->collager->id;
-        $topiks = Topik::self();
-        $banner= Banner::where('isViewWeb',1)->get();
-        $premium = DetailTransaksi::with('transaksi','detailPaket.paket')
-        ->whereHas('transaksi', function($query) use($collagerId){
-            $query->where('collager_id',$collagerId)
-            ->where('status','STATUS_TRANS_2')
-            ->where('start_date','<=',Carbon::now())
-            ->where('expired_date','>=',Carbon::now());
-        })->get()->sortBy(function($quert) {
-            return $quert->detailPaket->paket->name;
+public function index(Request $request)
+{
+    // Mendapatkan filter dari request, jika tidak ada, maka akan bernilai null
+    $filter = $request->filter ?: null;
+
+    // Mendapatkan ID collager dari user yang sedang login
+    $collagerId = Auth::user()->collager->id;
+
+    // Mendapatkan data topik
+    $topiks = Topik::self();
+
+    // Mendapatkan data banner yang ditampilkan di halaman
+    $banner = Banner::where('isViewWeb', 1)->get();
+
+    // Mendapatkan data paket premium yang dimiliki oleh user yang sedang login
+    $premium = DetailTransaksi::with('transaksi', 'detailPaket.paket')
+        ->whereHas('transaksi', function ($query) use ($collagerId) {
+            $query->where('collager_id', $collagerId)
+                ->where('status', 'STATUS_TRANS_2')
+                ->where('start_date', '<=', Carbon::now())
+                ->where('expired_date', '>=', Carbon::now());
+        })->get()->sortBy(function ($query) {
+            return $query->detailPaket->paket->name;
         });
 
-        $data=Paket::with('topik')->where('name','uji coba')->get();
-        return view('paket-saya.index',compact('data','topiks','premium','banner'));
+    // Mendapatkan data paket "uji coba" (trial)
+    $data = Paket::with('topik')->where('name', 'uji coba')->get();
+
+    // Jika user belum memiliki paket premium, alihkan langsung ke halaman "data uji coba"
+    if ($premium->isEmpty()) {
+        return redirect()->route('data.uji.coba');
     }
+
+    // Jika user sudah memiliki paket premium, tampilkan halaman dengan data-data yang diperlukan
+    return view('paket-saya.index', compact('data', 'topiks', 'premium', 'banner'));
+}
+
+// Fungsi untuk menampilkan halaman "data uji coba"
+public function showDataUjiCoba()
+{
+    $data = Paket::with('topik')->where('name', 'uji coba')->get();
+    return view('beranda.uji-coba', compact('data'));
+}
+
 
     public function show($namaPaket)
     {

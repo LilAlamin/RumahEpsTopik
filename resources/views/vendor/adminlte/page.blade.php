@@ -41,7 +41,7 @@
             </div>
 
             {{-- Main Content --}}
-            <div class="content">
+            <div class="content" style="min-height: 100vh;">
                 <div class="{{ config('adminlte.classes_content') ?: $def_container_class }}">
                     @yield('content')
                 </div>

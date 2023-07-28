@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth','role:user']], function () {
         Route::get('/beranda/{namaPaket}', [App\Http\Controllers\HomeController::class, 'show'])->name('paket-saya.show');
         Route::get('/beranda/premium/{namaPaket}', [App\Http\Controllers\HomeController::class, 'premium'])->name('paket-saya.premium');
         Route::post('/beranda/filter', [App\Http\Controllers\HomeController::class, 'filter'])->name('paket-saya.filter');
+        Route::get('/beranda/uji-coba', [HomeController::class, 'showDataUjiCoba'])->name('data.uji.coba');
         Route::get('/beranda/quiz/{id}', [App\Http\Controllers\HomeController::class, 'opening'])->name('paket-saya.opening');
     });
 

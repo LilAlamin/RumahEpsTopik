@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 
 use App\User;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -51,13 +51,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // Membersihkan karakter non-angka dari string 'phone'
+        $data['phone'] = preg_replace('/[^0-9]/', '', $data['phone']);
+    
         return Validator::make($data, [
-            
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'min:5', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => ['required', 'string', 'min:10','max:12'],
+            'phone' => ['required', 'string', 'min:10', 'max:12'],
         ]);
     }
 
@@ -83,7 +85,7 @@ class RegisterController extends Controller
         ]);
         // Flash a success message to the session
         session()->flash('success', 'Selamat Datang , Registrasi Anda Berhasil Disimpan');
-
         return $data;
+        
     }
 }

@@ -35,7 +35,7 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (Auth::user()->hasRole('user')) {
-            return route('paket-saya.index');
+            return route('data.uji.coba');
         } else {
             Auth::logout();
             return route('login');
@@ -64,7 +64,7 @@ class LoginController extends Controller
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
         {
             if (Auth::user()->hasRole('user')) {
-                return redirect()->route('paket-saya.index')->with('pesan','Anda Berhasil Login');
+                return redirect()->route('data.uji.coba')->with('pesan','Anda Berhasil Login');
                 return route('paket-saya.index');
             } else {
                 Auth::logout();

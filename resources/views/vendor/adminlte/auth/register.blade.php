@@ -42,7 +42,7 @@
         value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
     <div class="input-group-append">
         <div class="input-group-text">
-            <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+            <span class="fas fa-user-circle {{ config('adminlte.classes_auth_icon', '') }}"></span>
         </div>
     </div>
     @if($errors->has('name'))
@@ -51,6 +51,7 @@
     </div>
     @endif
 </div>
+
 
 {{-- Username field --}}
 <div class="input-group mb-3">
@@ -71,7 +72,7 @@
 {{-- Phone --}}
 <div class="input-group mb-3">
     <input type="text" name="phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
-        value="{{ old('phone') }}" placeholder="nomer telepon" >
+        value="{{ old('phone') }}" placeholder="nomer telepon" pattern="[0-9]*">
     <div class="input-group-append">
         <div class="input-group-text">
             <span class="fas fa-phone {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -84,10 +85,46 @@
     @endif
 </div>
 
-{{-- Email field --}}
+<script>
+    // Get the input element for the phone field
+    const phoneInput = document.querySelector('input[name="phone"]');
+
+    // Listen for the "input" event on the phone input field
+    phoneInput.addEventListener('input', function(event) {
+        const inputValue = event.target.value;
+        const numericOnly = /^\d*$/.test(inputValue);
+
+        // If the input contains non-numeric characters, show an error message
+        if (!numericOnly) {
+            // Add "is-invalid" class to the input element
+            phoneInput.classList.add('is-invalid');
+
+            // Create an error message element (if it doesn't exist)
+            let errorMessage = phoneInput.parentNode.querySelector('.invalid-feedback');
+            if (!errorMessage) {
+                errorMessage = document.createElement('div');
+                errorMessage.classList.add('invalid-feedback');
+                phoneInput.parentNode.appendChild(errorMessage);
+            }
+
+            // Set the error message text
+            errorMessage.textContent = 'Harus diisi dengan angka.';
+        } else {
+            // If the input is valid, remove any existing error message and "is-invalid" class
+            phoneInput.classList.remove('is-invalid');
+            const existingErrorMessage = phoneInput.parentNode.querySelector('.invalid-feedback');
+            if (existingErrorMessage) {
+                existingErrorMessage.remove();
+            }
+        }
+    });
+</script>
+
+
+{{-- Email --}}
 <div class="input-group mb-3">
     <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-        value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}">
+        value="{{ old('email') }}" placeholder="email">
     <div class="input-group-append">
         <div class="input-group-text">
             <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -99,6 +136,43 @@
     </div>
     @endif
 </div>
+
+<script>
+    // Get the input element for the email field
+    const emailInput = document.querySelector('input[name="email"]');
+
+    // Listen for the "input" event on the email input field
+    emailInput.addEventListener('input', function(event) {
+        const inputValue = event.target.value;
+        const hasAtSymbol = inputValue.includes('@','gmail.com');
+
+        // If the input does not contain the "@" symbol, show an error message
+        if (!hasAtSymbol) {
+            // Add "is-invalid" class to the input element
+            emailInput.classList.add('is-invalid');
+
+            // Create an error message element (if it doesn't exist)
+            let errorMessage = emailInput.parentNode.querySelector('.invalid-feedback');
+            if (!errorMessage) {
+                errorMessage = document.createElement('div');
+                errorMessage.classList.add('invalid-feedback');
+                emailInput.parentNode.appendChild(errorMessage);
+            }
+
+            // Set the error message text
+            errorMessage.textContent = 'Harus diisi dengan "@". dan berisi gmail.com/yahooo.com';
+        } else {
+            // If the input is valid, remove any existing error message and "is-invalid" class
+            emailInput.classList.remove('is-invalid');
+            const existingErrorMessage = emailInput.parentNode.querySelector('.invalid-feedback');
+            if (existingErrorMessage) {
+                existingErrorMessage.remove();
+            }
+        }
+    });
+</script>
+
+
 
 {{-- Password field --}}
 <div class="input-group mb-3">
