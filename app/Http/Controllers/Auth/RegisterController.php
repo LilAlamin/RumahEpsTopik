@@ -56,10 +56,10 @@ class RegisterController extends Controller
     
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'min:5', 'max:20'],
+            'username' => ['required', 'string', 'min:5', 'max:20', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => ['required', 'string', 'min:10', 'max:12'],
+            'phone' => ['required','string', 'min:10', 'max:12'],
         ]);
     }
 
@@ -71,6 +71,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Mengecek apakah username sudah ada dalam database
+        $existingUser = User::where('username', $data['username'])->first();
+        if ($existingUser) {
+            // Jika username sudah ada, kembalikan ke halaman login dengan pesan kesalahan
+            return redirect()->route('login')->withErrors(['username' => 'Username sudah dipakai']);
+        }
+
+        // Jika username belum ada, buat pengguna baru
         $data = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
@@ -80,12 +88,14 @@ class RegisterController extends Controller
             'lpk' => 'LPK2109141338952',
             'picture' => 'avatar.png',
         ])->assignRole('user');
+        
         DB::table('collagers')->insert([
             'user_id' => $data->id
         ]);
+
         // Flash a success message to the session
-        session()->flash('success', 'Selamat Datang , Registrasi Anda Berhasil Disimpan');
+        session()->flash('success', 'Selamat Datang, Registrasi Anda Berhasil Disimpan');
+
         return $data;
-        
     }
 }
