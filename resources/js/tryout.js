@@ -14,9 +14,44 @@ $(function() {
         section = response.data.section;
     });
 
-    $("#btn-selesai-tryout").on("click",function(){
+        $("#btn-selesai-tryout").on("click",function(){
+            Swal.fire({
+            html: "Submit jawaban sekarang?<br>Jawaban yang telah disubmit tidak dapat dirubah",
+            icon: 'warning',
+            allowOutsideClick: false,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Submit',
+            customClass: {
+                content: 'text-left'
+            }
+            }).then((result) => {
+            if (result.isConfirmed) {
+                let token = $('meta[name="csrf-token"]').attr('content');
+                var formData = new FormData();
+                formData.append('_token', token);
+                statusPengerjaan = 'submit';
+
+                axiosInstance.post('/submit', formData, {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded' },
+                }).then(response=>{
+                    // console.log(response);
+                    location.href = "/hasil-tryout/"+response.data.hasil;
+            }).catch(error=>{
+                Swal.fire({
+                    icon: 'error',
+                    text: error,
+                });
+            });
+        }
+        });
+    });
+
+    $("#btn-pindah-tryout").on("click",function(){
         Swal.fire({
-        html: "Submit jawaban sekarang?<br>Jawaban yang telah disubmit tidak dapat dirubah",
+        html: "Anda yakin ingin menyelesaikan sesi membaca?",
         icon: 'warning',
         allowOutsideClick: false,
         showCancelButton: true,
@@ -28,26 +63,11 @@ $(function() {
             content: 'text-left'
         }
         }).then((result) => {
-        if (result.isConfirmed) {
-            let token = $('meta[name="csrf-token"]').attr('content');
-            var formData = new FormData();
-            formData.append('_token', token);
-            statusPengerjaan = 'submit';
-
-            axiosInstance.post('/submit', formData, {
-                headers: {'Content-Type': 'application/x-www-form-urlencoded' },
-            }).then(response=>{
-                // console.log(response);
-                location.href = "/hasil-tryout/"+response.data.hasil;
-            }).catch(error=>{
-                Swal.fire({
-                    icon: 'error',
-                    text: error,
-                });
+            if (result.isConfirmed) {
+                seconds = 0;
+            }
             });
-        }
         });
-    });
 
     $("#btn-batal-tryout").on("click",function(){
         Swal.fire({
@@ -122,7 +142,7 @@ $(function() {
         }
     }
     countdownTimer = setInterval(timer, 1000);
-    $('.pagination').show();
+    $('.pagination').show();                           
 
     // check tab
     window.addEventListener('beforeunload', function (e) {
@@ -149,7 +169,6 @@ $(function() {
         let id = $(this).data('id');
         let no = this.dataset.no;
         let answer = $(this).val();
-
         var formData = new FormData();
         formData.append('_token', token);
         formData.append('question_id', questionId);
@@ -162,5 +181,6 @@ $(function() {
         });
 
     });
+
 
 });

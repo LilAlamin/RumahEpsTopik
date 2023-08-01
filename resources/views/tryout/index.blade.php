@@ -139,11 +139,12 @@
                                     <div style="width: 18px;height:18px" class="bg-white border border-2"></div>
                                      <p style="font-size: 15px;margin-top:-3px;"> &nbsp; : 대답하지 않았다<!--Belum dijawab--> </p>
                                     </div>
-                                    {{-- @if(session('user-quiz.section') == 'membaca')
-                                    <button class="btn btn-danger m-1 btn-batal-tryout">Batal Mengerjakan Quiz?</button>
+                                    @if(session('user-quiz.section') == 'membaca')
+                                    <button class="btn btn-danger m-1"  id="btn-batal-tryout">Batal Mengerjakan Quiz?</button>
+                                    <button id="btn-pindah-tryout">Habiskan Waktu</button>
                                     @else
-                                    <button class="btn btn-secondary m-1 btn-selesai-tryout">Jawaban Tersimpan Automatis</button>
-                                    @endif --}}
+                                    <button class="btn btn-secondary m-1" id="btn-selesai-tryout">Jawaban Tersimpan Automatis</button>
+                                    @endif
                                     </div>
                                 </div>
                             </div>

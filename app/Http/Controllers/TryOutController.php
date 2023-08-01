@@ -67,10 +67,11 @@ class TryOutController extends Controller
 
                 session(['user-quiz.start-time-reading' => Carbon::now()->format('Y-m-d H:i:s')]);
                 session(['user-quiz.end-time-reading' => Carbon::now()->addMinutes($quiz->timer_quiz/2)->format('Y-m-d H:i:s')]);
+               
+                session(['user-quiz.start-time-listening' => Carbon::now()->format('Y-m-d H:i:s')]);
+                session(['user-quiz.end-time-listening' => Carbon::now()->addMinutes($quiz->timer_quiz/2)->format('Y-m-d H:i:s')]);
 
-                session(['user-quiz.start-time-listening' => Carbon::parse(session('user-quiz.end-time-reading'))->format('Y-m-d H:i:s')]);
-                session(['user-quiz.end-time-listening' => Carbon::parse(session('user-quiz.end-time-reading'))->addMinutes($quiz->timer_quiz/2)->format('Y-m-d H:i:s')]);
-
+                
                 session(['user-quiz.quiz_id' => $quiz->id]);
                 session(['user-quiz.timer' => $quiz->timer_quiz/2 * 60]);
 
@@ -185,46 +186,55 @@ class TryOutController extends Controller
         return response()->json(['hasil'=>Auth::user()->collager->tryout->last()->id]);
     }
 
-    public function data(Request $request, $id)
-    {
-        // $second = session('user-quiz.timer');
-        $second = Quiz::find($id)->timer_quiz/2 * 60;
-        $section = session('user-quiz.section');
-        $quiz_id = session('user-quiz.quiz_id');
 
-        if ($request->session()->has('first-time-quiz-reading')) {
-            $second = $second;
-            $request->session()->forget('first-time-quiz-reading');
-        } elseif($request->session()->has('first-time-quiz-listening')) {
-            $second = Quiz::find($id)->timer_quiz/2 * 60;
-            $request->session()->forget('first-time-quiz-listening');
-        } else {
-            // if ($request->session()->has('page-load')) {
-                if ($section == 'membaca') {
-                    $startTime = Carbon::parse(session('user-quiz.start-time-reading'));
-                    $endTime = Carbon::parse(session('user-quiz.end-time-reading'));
-                    if (Carbon::now()->between($startTime,$endTime)) {
-                        $second = Carbon::now()->diffInSeconds($endTime);
-                    } else {
-                        $second = Quiz::find($quiz_id)->timer_quiz/2 * 60;
-                        session(['user-quiz.section'=>'mendengarkan']);
-                    }
-                } elseif ($section == 'mendengarkan') {
-                    $startTime = Carbon::parse(session('user-quiz.start-time-listening'));
-                    $endTime = Carbon::parse(session('user-quiz.end-time-listening'));
-                    if (Carbon::now()->between($startTime,$endTime)) {
-                        $second = Carbon::now()->diffInSeconds($endTime);
-                    } else {
-                        $second = 0;
-                    }
-                }
-                // $request->session()->forget('page-load');
-            // } else {
-            //     $second = $second;
-            // }
+
+public function data(Request $request, $id)
+{
+    $section = session('user-quiz.section');
+    $quiz_id = session('user-quiz.quiz_id');
+    $timer_quiz = Quiz::find($quiz_id)->timer_quiz;
+
+    if ($request->session()->has('first-time-quiz-reading')) {
+        $second = $timer_quiz / 2 * 60;
+        $request->session()->forget('first-time-quiz-reading');
+    } elseif ($request->session()->has('first-time-quiz-listening')) {
+        $second = $timer_quiz / 2 * 60;
+        $request->session()->forget('first-time-quiz-listening');
+    } else {
+        if ($section == 'membaca') {
+            $startTime = Carbon::parse(session('user-quiz.start-time-reading'));
+            $endTime = Carbon::parse(session('user-quiz.end-time-reading'));
+            $remainingSeconds = $endTime->diffInSeconds(Carbon::now());
+
+            if ($remainingSeconds <= 0) {
+                $second = 0;
+                session(['user-quiz.section' => 'mendengarkan']);
+                $request->session()->forget('user-quiz.start-time-reading');
+                $request->session()->forget('user-quiz.end-time-reading');
+            } else {
+                $second = $remainingSeconds;
+            }
+        } elseif ($section == 'mendengarkan') {
+            $startTime = Carbon::parse(session('user-quiz.start-time-listening'));
+            $endTime = Carbon::parse(session('user-quiz.end-time-listening'));
+            $remainingSeconds = $endTime->diffInSeconds(Carbon::now());
+
+            if ($remainingSeconds <= 0) {
+                $second = 0;
+                $request->session()->forget('user-quiz.start-time-listening');
+                $request->session()->forget('user-quiz.end-time-listening');
+            } else {
+                $second = $remainingSeconds;
+            }
         }
-        return response()->json(['time'=>$second,'section'=>$section]);
     }
+
+    return response()->json(['time' => $second, 'section' => $section]);
+}
+
+    
+    
+    
 
     public function checkUser(Request $request)
     {
