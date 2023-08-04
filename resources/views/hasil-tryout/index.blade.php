@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<div class="row">
+<div class="row" style="width: 100%; margin:auto">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -20,7 +20,7 @@
                     </div>
                     @else
                     <div class="card shadow-none">
-                        <div class="card-body table-responsive p-0" style="height: 300px; ">
+                        <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap table-striped" style="overflow-y: scroll" id="tabel-hasil-tryout">
                                 <thead style="background-color: #263B5E">
                                     <tr class="text-white text-center">
@@ -59,20 +59,20 @@
 
 @section('plugins.Datatables', true)
 @section('js')
-    <script>
-        $(function() {
-            $("#tabel-hasil-tryout").DataTable({
-                "info": false,
-                "lengthChange": false,
-                "language": {
-                    "paginate": {
-                        "next": "Berikutnya",
-                        "previous": "Sebelumnya"
-                    },
-                    "search": "Cari:"
+<script>
+    $(function() {
+        $("#tabel-hasil-tryout").DataTable({
+            "info": false,
+            "lengthChange": false,
+            "language": {
+                "paginate": {
+                    "next": "Berikutnya",
+                    "previous": "Sebelumnya"
                 },
-                "responsive": true
-            });
+                "search": "Cari:"
+            },
+            "responsive": true
         });
-    </script>
+    });
+</script>
 @endsection

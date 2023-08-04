@@ -9,13 +9,13 @@ class="text-dark">{{$data->topik->name}}</a>{{ ' - ' . $data->name }}</h1> --}}
 @stop
 
 @section('content')
-<div class="row">
+<div class="row overflow-hidden" style="width: 100%; margin:auto">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                 @foreach ($data as $quiz)
-                    
-                
+
+
                 <div class="row d-flex justify-content-center">
                     <div class="text-center">
                         <h4 style="color:#263B5E">고용허가제 한국어 능력시험</h4>
@@ -23,7 +23,7 @@ class="text-dark">{{$data->topik->name}}</a>{{ ' - ' . $data->name }}</h1> --}}
                         <p style="color:#263B5E" class="p-1 mt-3">문항수 : {{$quiz->tot_visible}}문제 / 시험 시간 {{$quiz->timer_quiz}}분</p>
                         <p style="margin-top:-20px">Number of questions : {{$quiz->tot_visible}} questions / test time : {{$quiz->timer_quiz}} minutes</p>
                         <p>시험 일자 : 년 월 일 <br>Test date : <?php echo  date("d/m/Y");
-                        ?> </p>
+                                                            ?> </p>
                         <p>문제지유형 : 1 형 <br>Test type : {{$quiz->paket->topik->name}}</p>
                     </div>
                 </div>
@@ -41,12 +41,12 @@ class="text-dark">{{$data->topik->name}}</a>{{ ' - ' . $data->name }}</h1> --}}
                 </div>
                 <div class="row justify-content-between">
                     <ul class="pagination col-6">
-                        <li  class="page-item"><a style="border-radius:29px;margin-left:7px;background-color:#039BB2;width:150px;height:45px" class="page-link text-white text-center" href="{{ url()->previous() }}"><i class="fa fa-backward mr-2" aria-hidden="true"></i>Kembali</a></li>
+                        <li class="page-item"><a style="border-radius:29px;margin-left:7px;background-color:#039BB2;width:150px;height:45px" class="page-link text-white text-center" href="{{ url()->previous() }}"><i class="fa fa-backward mr-2" aria-hidden="true"></i>Kembali</a></li>
                     </ul>
                     <ul class="pagination justify-content-end col-6">
-                        <li class="page-item"><a  style="border-radius:29px;margin-right:7px;background-color:#039BB2;width:150px;height:45px" class="page-link text-white btn-mulai-tryout text-center" href="{{ route('tryout.index').'?session='.session()->getId().$quiz->id }}" data-kuis-id="{{$quiz->id}}">Lanjut<i class="fa fa-forward ml-2" aria-hidden="true"></i></a></li>
+                        <li class="page-item"><a style="border-radius:29px;margin-right:7px;background-color:#039BB2;width:150px;height:45px" class="page-link text-white btn-mulai-tryout text-center" href="{{ route('tryout.index').'?session='.session()->getId().$quiz->id }}" data-kuis-id="{{$quiz->id}}">Lanjut<i class="fa fa-forward ml-2" aria-hidden="true"></i></a></li>
                     </ul>
-                    
+
                 </div>
                 @endforeach
             </div>
