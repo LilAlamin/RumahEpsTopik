@@ -100,6 +100,33 @@
 
     <!-- ========== Start How-Work ==========-->
     <section class="how-work ptb-120">
+        <div class="text-center">
+            <p class="teks-animasi">Mari dukung RumahEPS-TOPIK dengan “Secangkir Kopi” untuk mengembangkan tampilan website dan pembuatan soal-soal latihan EPS-TOPIK TERBARU. Teman-teman bisa mengapresiasikannya melalui rekening berikut: <br>
+                CV. RUMAH KOREA INDONESIA | BNI: 8000997899</p>
+
+                <style>
+                    .teks-animasi {
+                    max-width: 80%;
+                    display: inline-block;
+                    animation: naikTurun 2s linear infinite;
+                    text-align: center;
+                    font-size: 15px;
+                    font-weight: bold;
+                    color: #263B5E;
+                    margin-top: -40px;
+                    }
+    
+                    @keyframes naikTurun {
+                    0%, 100% {
+                        transform: translateY(0);
+                    }
+                    50% {
+                        transform: translateY(-20px);
+                    }
+                }
+    
+                </style>
+        </div>
         <div class="container text-center">
             <div class="heading text-center mb-70">
                 <h2 class="h2">Selamat Datang !</h2>

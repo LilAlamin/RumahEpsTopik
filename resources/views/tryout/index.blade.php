@@ -6,7 +6,27 @@
     body {
         overflow-x: hidden;
     }
+    .hidden {
+      display: none;
+    }
 </style>
+<script>
+    function toggleTextarea() {
+      var textarea = document.getElementById('questionTextarea');
+      if (textarea.value === '') {
+        textarea.classList.add('hidden');
+      } else {
+        textarea.classList.remove('hidden');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      toggleTextarea();
+
+      var textarea = document.getElementById('questionTextarea');
+      textarea.addEventListener('input', toggleTextarea);
+    });
+  </script>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -46,7 +66,7 @@
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
-                                <textarea class="form-control" style="border: none;height:150px" readonly>{{$question['question']}}</textarea>
+                                <textarea id="questionTextarea" class="form-control" style="border: none;height:150px" readonly>{{$question['question']}}</textarea>
                                 @if(!empty($question['pic_url']))
                                 <div class="col-lg-6 p-0 mt-1">
                                     <img class="img-fluid rounded w-100" src="{{config('apiurl.url').'/api/storage/question/'.$question['pic_url']}}" alt="Gambar soal">
@@ -142,7 +162,7 @@
                                 </div>
                                 @if(session('user-quiz.section') == 'membaca')
                                 <button class="btn btn-outline-danger mr-1" id="btn-batal-tryout">Batal Mengerjakan</button>
-                                <button class="btn btn-secondary ml-1" id="btn-pindah-tryout">Simpan Jawaban Membaca</button>
+                                <button class="btn btn-outline-primary mt-2" id="btn-pindah-tryout">Simpan Jawaban Membaca</button>
                                 @else
                                 <button class="btn btn-secondary" id="btn-selesai-tryout">Akhiri Tes</button>
                                 @endif

@@ -7,6 +7,22 @@
 @stop --}}
 
 @section('content')
+
+{{-- <div class="container-fluid" style="background-color: #f8f9fa;margin-top:-30px;margin-bottom:40px">
+    <marquee class="contoh" behavior="scroll" direction="left" scrollamount="10">
+        <strong>
+            </strong>
+    </marquee>
+    <style>
+        .contoh:hover{
+            background-color:#dff0f3;
+            box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.189);
+            transition: 0.5s;
+        }.contoh:not(:hover){
+            transition: 0.5s;
+        }
+    </style>
+</div> --}}
 <div style="background: url('../img/bg.png') no-repeat ;padding:0px 0px; min-height:90vh; background-size:cover;background-position:center;margin:0px">
     <div style="padding:0px 0px" class=" justify-content-center mb-5  ">
 
@@ -31,8 +47,34 @@
         </script>
         @endif
         <div class="text-center ">
-            <h3 class="font-weight-bold" style="color:black ">Selamat Datang di</h3>
+            <h3 class="font-weight-bold " style="color:black ">Selamat Datang di</h3>
             <h3 class="font-weight-bold" style="color:black "> {{$data->topik->name}}</h3>
+            <style>
+                .teks-animasi {
+                max-width: 80%;
+                display: inline-block;
+                animation: naikTurun 2s linear infinite;
+                text-align: center;
+                font-size: 18px;
+                color: #263B5E;                
+                font-weight: bold;
+                margin-top: 60px;
+                }
+
+                @keyframes naikTurun {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-20px);
+                }
+            }
+
+            </style>
+        </div>
+        <div class="text-center">
+            <p class="teks-animasi">Mari dukung RumahEPS-TOPIK dengan “Secangkir Kopi” untuk mengembangkan tampilan website dan pembuatan soal-soal latihan EPS-TOPIK TERBARU. Teman-teman bisa mengapresiasikannya melalui rekening berikut: <br>
+                CV. RUMAH KOREA INDONESIA | BNI: 8000997899</p>
         </div>
     </div>
     <div class="row justify-content-center pb-4" style="width: 100%; margin:auto">
